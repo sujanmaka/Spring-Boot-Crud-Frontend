@@ -1,0 +1,84 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-title-wrapper">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="back-button-block">
+              <button type="button" (click)="back()" class="btn btn-icon-only casba-bck-btn">
+                <i class="mdi mdi-arrow-left" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="page-title-block">
+              <div class="page-title">
+                <span>Edit Employee</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form #editEmployee="ngForm" class="form-horizontal" (submit)="edit(employee.id, editEmployee)" novalidate>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fieldName">Employee Name</label>
+                  <div class="input-group">
+                    <input type="text" id="empName" name="empName" class="form-control" [(ngModel)]="employee.empName">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fieldName">Employee Age</label>
+                  <div class="input-group">
+                    <input type="text" id="empAge" name="empAge" class="form-control" [(ngModel)]="employee.empAge">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fieldName">Employee Address</label>
+                  <div class="input-group">
+                    <input type="text" id="empAddress" name="empAddress" class="form-control"
+                      [(ngModel)]="employee.empAddress">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fieldName">Employee Role Name</label>
+                  <div class="input-group">
+                    <input type="text" id="id" name="id" class="form-control" value="{{employee.role.roleName}}"
+                      readonly>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <span>Select Role</span>
+                <div>
+                  <select name="employeeRole" [(ngModel)]="employee.role">
+                    <option *ngFor="let role of roles" [ngValue]="role">{{role.roleName}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="admin-card-footer">
+              <button *ngIf="!buttonPressed" type="submit" class="btn btn-gap btn-primary">Modify</button>
+              <button *ngIf="!buttonPressed" type="button" class="btn btn-default" (click)="back()">Cancel</button>
+              <button *ngIf="buttonPressed" class="btn btn-default" [disabled]="true">Processing</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

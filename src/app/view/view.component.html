@@ -1,0 +1,28 @@
+<table class="table table-minimal-border">
+  <thead>
+      <tr>
+          <!-- <th>ID</th> -->
+          <th>Employee Name</th>
+          <th>Employee Age</th>
+          <th>Employee Address</th>
+          <th>Employee Role Name</th>
+          <th>Edit</th>
+      </tr>
+  </thead>
+  <tbody striped="true">
+      <tr *ngFor="let employee of employees">
+          <!-- <td>{{metatable.id ? metatable.id :'N/A' }}</td> -->
+          <td>{{employee.empName ? employee.empName : 'N/A'}}</td>
+          <td>{{employee.empAge ? employee.empAge : 'N/A'}}</td>
+          <td>{{employee.empAddress ? employee.empAddress : 'N/A'}}</td>
+          <td>{{employee.role.roleName ? employee.role.roleName : 'N/A'}}</td>
+          <td>
+              <button type="button" [routerLink]="['edit',employee.id]">Edit Employee</button>
+          </td>
+          <td>
+            <button type="button" (click)="delete(employee.id)">Delete Employee</button>
+          </td>
+      </tr>
+      <button type="button" [routerLink]="['add']">Add Employee</button>
+  </tbody>
+</table>
